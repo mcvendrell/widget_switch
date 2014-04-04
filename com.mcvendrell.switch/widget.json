@@ -1,0 +1,15 @@
+{
+	"id": "com.mcvendrell.switch",
+	"name": "com.mcvendrell.switch",
+	"description": "An styled switch for Android with the holo style.",
+	"author": "Manuel Conde",
+	"version": "1.0",
+	"copyright": "Copyright (c)2014",
+	"license": "Apache 2.0",
+	"min-alloy-version": "1.0",
+	"min-titanium-version": "3.0",
+	"tags": "",
+	"platforms": "android",
+	"dependencies": {
+	}
+}
