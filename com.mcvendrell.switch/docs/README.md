@@ -29,7 +29,24 @@ You can add a Switch to a view by *requiring* the switch widget.
 
 	<Widget id="mySwitch" src="com.mcvendrell.switch"/>
 
-Assign it an ID that you can use in your controller. E.g. `id="mySwitch"` You can now access the Switch via `$.mySwitch` in your controller. 
+Assign it an ID that you can use in your controller. E.g. `id="mySwitch"` You can now access the Switch via `$.mySwitch` in your controller.
+
+```
+Ti.API.info("switch value " + $.mySwitch.value);
+```
+
+## Detect a Switch change
+You can detect a Switch change simply adding a onChange event. 
+
+	<Widget id="mySwitch" src="com.mcvendrell.switch" onChange="myChangeFunction" />
+
+You can now access the Switch change in your controller:
+
+```
+function myChangeFunction(e){
+    Ti.API.info("Change detected. Value: " + e.value);
+}
+```
 
 ## Position and Style the Switch
 In your .tss file for the view, you can style and position your Switch as you would any other control, using any valid properties for [Ti.UI.ScrollableView object](http://docs.appcelerator.com/titanium/latest/#!/api/Titanium.UI.ScrollableView).
