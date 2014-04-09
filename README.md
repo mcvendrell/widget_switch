@@ -6,8 +6,11 @@ The **Switch** widget provides an styled switch for Android/mobileweb with the h
 
 (this is not the real speed, this GIF is a lot more slow)
 
+**NOTE**: My first version, that works with an ScrollView, is in the *scrollView* branch. But the master version is better in terms of accuracy (just touch any part of the switch and changes automatically). Old is like this:
+![Old Animation example](com.mcvendrell.switch/docs/img/switchOld.gif)
+
 ##Manifest
-* Version: 1.0 (stable)
+* Version: 1.1 (stable)
 * Github: https://github.com/mcvendrell/widget_switch
 * License: [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.html)
 * Author: Manuel Conde
@@ -81,12 +84,10 @@ $.mySwitch.init($.getView());
 | value | *boolean* | *Read/Write.* A boolean value to set/get the switch state: true = ON; false = OFF. |
 
 ## Localization
-In order to support localization and avoid translation problems, I have chosen to use icons instead of text, so, in the doc/img folder you have 3 options to overwrite the default assets images folders. Choose what you prefer:
+In order to support localization and avoid translation problems, I have chosen to use icons instead of text, so, in the doc/img folder you have 2 options to overwrite the default assets images folders. Choose what you prefer:
 
-![My choice](com.mcvendrell.switch/docs/img/off_model-1.png) - ![](com.mcvendrell.switch/docs/img/on_model-1.png)
+![My choice](com.mcvendrell.switch/docs/img/off.png) - ![](com.mcvendrell.switch/docs/img/on.png)
 
-![Option 2](com.mcvendrell.switch/docs/img/off_model-2.png) - ![](com.mcvendrell.switch/docs/img/on_model-2.png)
-
-![Option 3](com.mcvendrell.switch/docs/img/off_model-3.png) - ![](com.mcvendrell.switch/docs/img/on_model-3.png)
+![Option 2](com.mcvendrell.switch/docs/img/off_plain.png) - ![](com.mcvendrell.switch/docs/img/on_plain.png)
 
 Or you can edit it and make your own.
