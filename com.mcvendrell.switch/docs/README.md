@@ -54,7 +54,7 @@ function myChangeFunction(e){
 ```
 
 ## Position and Style the Switch
-In your .tss file for the view, you can style and position your Switch as you would any other control, using any valid properties for [Ti.UI.ScrollableView object](http://docs.appcelerator.com/titanium/latest/#!/api/Titanium.UI.ScrollableView).
+In your .tss file for the view, you can style and position your Switch as you would any other control, using any valid properties for [Ti.UI.View object](http://docs.appcelerator.com/titanium/latest/#!/api/Titanium.UI.View).
 
 ```
 "#mySwitch": {
@@ -76,7 +76,7 @@ $.mySwitch.init($.getView());
 | --------- | ---- | ----------- |
 | args | *object* | An object containing the arguments for initialization. |
 | args.parentView | *Ti.UI.View* | Top level view to display the picker in. |
-| [args.*parameters*] | *various* | Any valid [Ti.UI.ScrollableView](http://docs.appcelerator.com/titanium/latest/#!/api/Titanium.UI.ScrollableView) key/value pairs that you want applied to the Switch appearance. It is recommended that you set these in the parent tss file where possible. |
+| [args.*parameters*] | *various* | Any valid [Ti.UI.View](http://docs.appcelerator.com/titanium/latest/#!/api/Titanium.UI.View) key/value pairs that you want applied to the Switch appearance. It is recommended that you set these in the parent tss file where possible. |
 
 ## Accessible Properties and Methods
 | Properties | Type | Description |
