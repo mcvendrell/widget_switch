@@ -1,5 +1,10 @@
 "#switchView": {
-    width: Ti.UI.SIZE,
-    height: Ti.UI.SIZE,
-    backgroundColor: 'transparent',
+    borderRadius: 8,
+    backgroundColor: '#464646',
+},
+"#lblCheck": {
+    left: 0,
+    width: 40,
+    height: Ti.UI.FILL,
+    backgroundImage: '/images/com.mcvendrell.switch/off.png'
 }

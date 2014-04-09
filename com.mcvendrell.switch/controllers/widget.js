@@ -5,15 +5,17 @@
 
 // Default size
 var defaults = {
-    width: 85,
-    height: 21
+    width: 80,
+    height: 32
 };
-var dimensions =  ["left", "top", "right", "bottom", "center", "width", "height"];
 var properties = ["parentView", "value"];
 
 // Allow parameters to be brought in through the parent tss file.
 var args = _.defaults(arguments[0], defaults);
 _.extend($.switchView, _.omit(args, properties));    
+
+// Holds the lblCheck width for later calculations
+var lblWidth = 40;
 
 /**
  * @method init
@@ -26,36 +28,28 @@ exports.init = function (parentView) {
     }
     $.parentView = parentView;
 
-    // Create two buttons to emulate states
-    var btnOn = Ti.UI.createButton({
-        width: Ti.UI.SIZE,
-        height: Ti.UI.SIZE,
-        id: 'on',
-        backgroundImage : '/images/com.mcvendrell.switch/on.png'
-    });
-    var btnOff = Ti.UI.createButton({
-        width : Ti.UI.SIZE,
-        height : Ti.UI.SIZE,
-        id: 'off',
-        backgroundImage : '/images/com.mcvendrell.switch/off.png'
-    });
-    
-    // Add each button to own view on the scroll
-    //$.switchView.setOverScrollMode(Ti.UI.Android.OVER_SCROLL_NEVER); //Doesn't work, so make background same color as background images
-    $.switchView.setViews([btnOn, btnOff]);
-    // First page is on (to get a good scroll), set off as default
-    $.switchView.scrollToView(1);
+    // Initialize internal value    
     $._value = false;
+    
+    // borderRadius not under dip system variable, make manual dip
+    var radius = dpUnitsToPixels($.switchView.height / 2);
+    
+    // Initialize general sizes
+    $.switchView.borderRadius = radius;
+    
+    // Rearrange label sizes
+    lblWidth = $.switchView.width / 2;
+    $.lblCheck.width = lblWidth;
+    $.lblCheck.borderRadius = radius;
 
-    // When the scroll is finished, get the state and trigger (first page = ON)
-    $.switchView.addEventListener('dragend', function(e) {
-        var page = e.currentPage;
-        if (page == 0) {
-            // ON is selected;
-            $.value = true;
-        } else {
-            // OFF is selected;
+    // On every click, change value to opposite
+    $.switchView.addEventListener('click', function() {
+        if ($.value) {
+            // ON was selected, change to OFF;
             $.value = false;
+        } else {
+            // OFF was selected, change to ON;
+            $.value = true;
         }
         // Trigger a change event for the widget
         $.trigger('change', { 
@@ -65,6 +59,10 @@ exports.init = function (parentView) {
         });
     });
 };
+
+function dpUnitsToPixels(dpUnits) {
+  return (dpUnits * (Titanium.Platform.displayCaps.dpi / 160));
+}
 
 // value is the configured value for the switch: true or false
 Object.defineProperty($, "value", {
@@ -76,9 +74,21 @@ Object.defineProperty($, "value", {
             Ti.API.error("Custom Switch: \'value\' must be boolean.");
         } else {
             $._value = value;
-            // Remember, first page = ON = true
-            var page = (value === true) ? 0 : 1;
-            $.switchView.scrollToView(page);
+
+            // Create transformation&Animation (not under dip system variable, make manual dip)
+            var x = (value === true) ? dpUnitsToPixels(lblWidth) : 0;
+            var trans = Ti.UI.create2DMatrix();
+            trans = trans.translate(x, 0);
+            var anim = Ti.UI.createAnimation();
+            anim.transform = trans;
+            anim.duration = 300;
+            // Do it over a view container instead the label, because there is a bug with 2D Matrix and borderRadius
+            // https://jira.appcelerator.org/browse/TIMOB-13488
+            $.lblWrapper.animate(anim);
+            
+            // Change the image
+            var image = (value === true) ? 'on' : 'off';
+            $.lblCheck.backgroundImage = '/images/com.mcvendrell.switch/' + image + '.png';
         }
     }
 });

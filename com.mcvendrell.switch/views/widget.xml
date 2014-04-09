@@ -1,5 +1,7 @@
 <Alloy>
-    <ScrollableView id="switchView" backgroundColor="#464646">
-        
-    </ScrollableView>
+    <View id="switchView">
+        <View id="lblWrapper" backgroundColor="transparent">
+            <Label id="lblCheck" />
+        </View>
+    </View>
 </Alloy>
