@@ -22,7 +22,7 @@ The **Switch** widget provides an styled switch for Android/mobileweb with the h
 
 ```
 "dependencies": {
-    "com.mcvendrell.switch": "1.0"
+    "com.mcvendrell.switch": "1.1"
 }
 ```
 
