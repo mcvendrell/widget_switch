@@ -61,7 +61,11 @@ exports.init = function (parentView) {
 };
 
 function dpUnitsToPixels(dpUnits) {
-  return (dpUnits * (Titanium.Platform.displayCaps.dpi / 160));
+    if (OS_IOS) {
+        return dpUnits;
+    } else {
+        return (dpUnits * (Titanium.Platform.displayCaps.dpi / 160));
+    }
 }
 
 // value is the configured value for the switch: true or false
