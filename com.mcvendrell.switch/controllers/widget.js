@@ -15,7 +15,7 @@ var args = _.defaults(arguments[0], defaults);
 _.extend($.switchView, _.omit(args, properties));    
 
 // Holds the lblCheck width for later calculations
-var lblWidth = 40;
+var lblWidth = 32;
 
 /**
  * @method init
