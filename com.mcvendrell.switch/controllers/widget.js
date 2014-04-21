@@ -5,7 +5,7 @@
 
 // Default size
 var defaults = {
-    width: 80,
+    width: 64,
     height: 32
 };
 var properties = ["parentView", "value"];
