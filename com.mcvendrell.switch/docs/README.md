@@ -1,6 +1,6 @@
 # Switch Widget Sample
 
-The **Switch** widget provides an styled switch for Android/mobileweb with the holo style.
+The **Switch** widget provides an styled switch for Android/mobileweb with the holo style. Also works on iOS, but the native iOS is better, of course.
 
 ![Animation example](img/switch.gif)
 
