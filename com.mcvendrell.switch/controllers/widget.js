@@ -61,10 +61,10 @@ exports.init = function (parentView) {
 };
 
 function dpUnitsToPixels(dpUnits) {
-    if (OS_IOS) {
-        return dpUnits;
-    } else {
+    if (OS_ANDROID) {
         return (dpUnits * (Titanium.Platform.displayCaps.dpi / 160));
+    } else {
+        return dpUnits;
     }
 }
 
