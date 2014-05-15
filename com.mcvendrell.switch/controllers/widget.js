@@ -32,7 +32,9 @@ exports.init = function (parentView) {
     $._value = false;
     
     // borderRadius not under dip system variable, make manual dip
-    var radius = dpUnitsToPixels($.switchView.height / 2);
+    // var radius = dpUnitsToPixels($.switchView.height / 2);
+    // Fixed on SDK 3.2.3
+    var radius = $.switchView.height / 2;
     
     // Initialize general sizes
     $.switchView.borderRadius = radius;
